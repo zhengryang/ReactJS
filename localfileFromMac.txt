@@ -11,6 +11,18 @@ ls - list all files inside this folder
 7) enter username & password(can be machine generated depends)  
 
 
+<how to push from local to GitHub on Mac> 
+Cd to destination folder
+
+git init
+sudo git add .
+sudo git status
+sudo git commit -m "update git push command"
+sudo git push -u origin main
+
+
+
+
 https://techglimpse.com/error-src-refspec-main-does-not-match-any-git/
 
 $ git show-ref 
