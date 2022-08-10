@@ -1,0 +1,11 @@
+https://www.youtube.com/watch?v=wrb7Gge9yoE&t=250s
+
+
+ls - list all files inside this folder
+1) git init -  Initialize the local directory as a Git repository
+2) git add . - add the files in your new local repository. Your files will now be staged for their first commit.
+3) git status - shows all files you have staged for commit
+4) git commit -m "commit msg" - commit the files that you have staged in your local repository. 
+5) git remote add origin <repository URL > - specify the remote repository URL , first copy from Github repository, 2nd add the URL for the remote repository where your local repository will be pushed. 
+6) git push -u origin <mastor/or main depends> - lastly, push the code from local to Github.
+7) enter username & password(can be machine generated depends)  
