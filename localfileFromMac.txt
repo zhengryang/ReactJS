@@ -21,13 +21,33 @@ sudo git commit -m "update git push command"
 sudo git push -u origin main
 
 
+push code to existing Github repository
+git init
+git add . 
+git commit -m "Initial Commit"
+git remote add origin https://github.com/zhengryang/ReactJS.git
+git pull
+git push origin main
 
 
+<The “fatal: refusing to merge unrelated histories” Git error>
+
+https://www.educative.io/answers/the-fatal-refusing-to-merge-unrelated-histories-git-error
+
+Solution
+The error is resolved by toggling the allow-unrelated-histories switch. After a git pull or git merge command, add the following tag:
+
+git pull origin master --allow-unrelated-histories
+
+
+
+====================================> <error: src refspec main does not match any> <====================================
 https://techglimpse.com/error-src-refspec-main-does-not-match-any-git/
+
 
 $ git show-ref 
 95b095fb6dd8c8af48c35317af7da14bd9f9f622 refs/heads/master
-
+The output of the above command says that the local is still refering to master head and not the newly renamed main.
 
 To change the local reference to point to main branch, replace HEAD:master with HEAD:main in the below command.
 
@@ -35,3 +55,15 @@ To change the local reference to point to main branch, replace HEAD:master with 
 to
 
 # git push origin HEAD:main
+
+
+====================================> <error: git pull > <====================================
+check all branches 
+git log --oneline
+
+
+update the pointer
+git fetch
+
+pull from specific branch: git pull <remote> <branch> 
+git pull origin main 
