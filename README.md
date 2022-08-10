@@ -1,5 +1,3 @@
-# ReactJS
-for study purpose only
 # Using Git version control for code projects
 
 ## Creating a new code repo from a local working copy
