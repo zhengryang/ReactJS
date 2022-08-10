@@ -12,16 +12,18 @@ ls - list all files inside this folder
 
 
 <how to push from local to GitHub on Mac> 
-Cd to destination folder
+Cd to destination folder, 
 
+1) 'git pull' first or 'git pull orgin main' first before below
+
+2)
 git init
 sudo git add .
 sudo git status
 sudo git commit -m "update git push command"
 sudo git push -u origin main
 
-
-push code to existing Github repository
+2)
 git init
 git add . 
 git commit -m "Initial Commit"
