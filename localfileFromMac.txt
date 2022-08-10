@@ -9,3 +9,17 @@ ls - list all files inside this folder
 5) git remote add origin <repository URL > - specify the remote repository URL , first copy from Github repository, 2nd add the URL for the remote repository where your local repository will be pushed. 
 6) git push -u origin <mastor/or main depends> - lastly, push the code from local to Github.
 7) enter username & password(can be machine generated depends)  
+
+
+https://techglimpse.com/error-src-refspec-main-does-not-match-any-git/
+
+$ git show-ref 
+95b095fb6dd8c8af48c35317af7da14bd9f9f622 refs/heads/master
+
+
+To change the local reference to point to main branch, replace HEAD:master with HEAD:main in the below command.
+
+# git push origin HEAD:master
+to
+
+# git push origin HEAD:main
