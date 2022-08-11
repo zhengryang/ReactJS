@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UpdatedComponent = (OriginalComponent) => {
+const withCounterHOC = (OriginalComponent) => {
     class NewComponent extends React.Component {
 
         constructor(props) {
@@ -29,4 +29,4 @@ const UpdatedComponent = (OriginalComponent) => {
     return NewComponent
 };
 
-export default UpdatedComponent
+export default withCounterHOC

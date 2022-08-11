@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import UpdatedComponent from './34_withCounter';
+// first 'withCounter' is class name, 2nd is fileName
+import withCounterHOC from './withCounter';
 
 class ClickCount extends Component {
 
@@ -18,4 +19,4 @@ class ClickCount extends Component {
     }
 }
 
-export default UpdatedComponent(ClickCount) ;
+export default withCounterHOC(ClickCount) ;

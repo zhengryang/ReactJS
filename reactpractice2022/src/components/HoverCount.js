@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UpdatedComponent from './34_withCounter';
+import withCounterHOC from './withCounter';
 
 class HoverCount extends Component {
 
@@ -17,4 +17,4 @@ class HoverCount extends Component {
     }
 }
 
-export default UpdatedComponent(HoverCount) ;
+export default withCounterHOC(HoverCount) ;
