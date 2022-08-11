@@ -20,4 +20,4 @@ class ClickCount extends Component {
     }
 }
 
-export default withCounterHOC(ClickCount) ;
+export default withCounterHOC(ClickCount, 5) ;

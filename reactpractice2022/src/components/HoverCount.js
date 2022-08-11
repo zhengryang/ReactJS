@@ -17,4 +17,4 @@ class HoverCount extends Component {
     }
 }
 
-export default withCounterHOC(HoverCount) ;
+export default withCounterHOC(HoverCount, 3) ;

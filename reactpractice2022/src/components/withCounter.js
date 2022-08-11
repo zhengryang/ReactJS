@@ -1,6 +1,6 @@
 import React from 'react';
 
-const withCounterHOC = (OriginalComponent) => {
+const withCounterHOC = (OriginalComponent, incrementCount) => {
     class NewComponent extends React.Component {
 
         constructor(props) {
@@ -13,7 +13,7 @@ const withCounterHOC = (OriginalComponent) => {
         
         updateCount() {
             this.setState ( prevState => {
-                return {count: prevState.count +1}
+                return {count: prevState.count + incrementCount}
             })
         }
 
