@@ -1,1 +1,23 @@
-for testing line 1
+issue:
+
+1) Message "npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead"
+
+https://stackoverflow.com/questions/72401421/message-npm-warn-config-global-global-local-are-deprecated-use-loc
+
+<For Windows users (thanks to @Lars) use this library:
+Open PowerShell as administrator and run (info about policy): > 
+
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force
+npm install --global --production npm-windows-upgrade
+npm-windows-upgrade --npm-version latest
+<Edit: Remember to go back to initial policy>
+
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+
+2) 'React' must be in scope when using JSX react/react-in-jsx-scope?
+
+https://stackoverflow.com/questions/42640636/react-must-be-in-scope-when-using-jsx-react-react-in-jsx-scope
+
+The import line should be:
+
+import React, { Component }  from 'react';
