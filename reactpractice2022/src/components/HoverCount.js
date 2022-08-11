@@ -1,30 +1,20 @@
 import React, { Component } from 'react';
+import UpdatedComponent from './34_withCounter';
 
 class HoverCount extends Component {
 
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            count: 0
-        }
-        this.updateCount = this.updateCount.bind(this)
-    }
-    
-    updateCount() {
-        this.setState ( prevState => {
-            return {count: prevState.count +1}
-        })
-    }
 
     render() {
+        // receive data from props 
+        const {count, updateCount} = this.props
         return (
             <div>
-                 
-                <h1 onMouseMove = {this.updateCount}>hover count: {this.state.count}</h1>
+                 {/* we don't need to use keyword 'this' anymore here */}
+                <h1 onMouseMove = {updateCount}>hover count: {count}</h1>
             </div>
         );
     }
 }
 
-export default HoverCount;
+export default UpdatedComponent(HoverCount) ;

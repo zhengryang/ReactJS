@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
+import UpdatedComponent from './34_withCounter';
 
 class ClickCount extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            count: 0
-        }
-        this.updateCount = this.updateCount.bind(this)
-    }
     
-    updateCount() {
-        this.setState ( prevState => {
-            return {count: prevState.count +1}
-        })
-    }
 
     render() {
+        // receive data from props 
+        const {count, updateCount} = this.props
         return (
             <div>
-                click count {this.state.count}
-                <button onClick={this.updateCount}>click</button>
+                {/* we don't need to use keyword 'this' anymore here */}
+                click count {count}
+                <button onClick={updateCount}>click</button>
             </div>
         );
     }
 }
 
-export default ClickCount;
+export default UpdatedComponent(ClickCount) ;
