@@ -11,8 +11,9 @@ class ClickCount extends Component {
         const {count, updateCount} = this.props
         return (
             <div>
+                {this.props.name }
                 {/* we don't need to use keyword 'this' anymore here */}
-                click count {count}
+                 click count {count}
                 <button onClick={updateCount}>click</button>
             </div>
         );

@@ -23,6 +23,7 @@ const withCounterHOC = (OriginalComponent) => {
             count = {this.state.count}
             // pass method of updateCount()
             updateCount = {this.updateCount}
+            {... this.props}
             ></OriginalComponent>
         }
     }

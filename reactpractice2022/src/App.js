@@ -7,7 +7,7 @@ import React  from 'react';
 function App() {
   return (
     <div className="App">
-       <ClickCount></ClickCount>
+       <ClickCount name="zheng"></ClickCount>
        <HoverCount></HoverCount>
     </div>
   );
