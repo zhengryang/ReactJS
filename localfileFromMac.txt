@@ -69,3 +69,13 @@ git fetch
 
 pull from specific branch: git pull <remote> <branch> 
 git pull origin main 
+
+<Error while pull from git - insufficient permission for adding an object to repository database .git/objects>
+https://stackoverflow.com/questions/18779442/error-while-pull-from-git-insufficient-permission-for-adding-an-object-to-repo
+
+Assuming @ChrisHayes is right about an accidental sudo, this should fix it. From inside your repository:
+
+sudo chown -R $USER:$USER "$(git rev-parse --show-toplevel)/.git"
+Update: for those of you getting the illegal group name error, try this instead:
+
+sudo chown -R $(id -u):$(id -g) "$(git rev-parse --show-toplevel)/.git"
