@@ -1,28 +1,15 @@
 import React, { Component } from 'react';
 
 class RenderPropsClickCounter extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            count: 0
-        }
-        this.updateCount = this.updateCount.bind(this);
-    }
 
-    
-    updateCount =() => {
-        this.setState(prevState => {
-            return {count: prevState.count + 1};
-        })
-    }
 
     render() {
-        
+        const {count, updateCount} = this.props
         return (
             <div>
                 RenderPropsClickCounter
-                {this.state.count}
-            <button onClick={this.updateCount}> add count</button>
+                {count}
+            <button onClick={updateCount}> add count</button>
             </div>
         );
     }
