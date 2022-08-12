@@ -5,6 +5,7 @@ import HoverCount from './components/HoverCount';
 import React  from 'react';
 import RenderPropsClickCounter from './components/renderPropsClickCounter';
 import RenderPropsHoverCounter from './components/renderPropsHoverCounter';
+import RenderPropsUser from './components/RenderPropsUser';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 
        <RenderPropsClickCounter></RenderPropsClickCounter>
        <RenderPropsHoverCounter></RenderPropsHoverCounter>
+       <RenderPropsUser nameOfRenderProps = {(isLoggedIn) =>isLoggedIn? 'user_zheng' : 'guest'}></RenderPropsUser>
     </div>
   );
 }
