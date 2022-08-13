@@ -7,6 +7,8 @@ import RenderPropsClickCounter from './components/renderPropsClickCounter';
 import RenderPropsHoverCounter from './components/renderPropsHoverCounter';
 import RenderPropsUser from './components/RenderPropsUser';
 import RenderPropsCounter from './components/renderPropsCounter';
+import ComponentC_39 from './components/ComponentC_39';
+import { UserProvider } from './components/UserContext_39';
 
 function App() {
   return (
@@ -19,7 +21,7 @@ function App() {
        <RenderPropsUser nameOfRenderProps = {(isLoggedIn) =>isLoggedIn? 'user_zheng' : 'guest'}></RenderPropsUser>
         */}
        {/* hover render props */}
-       <RenderPropsCounter 
+       {/* <RenderPropsCounter 
             renderFromCounter = {(count,updateCount ) => (
                   <RenderPropsHoverCounter
                   count = {count} updateCount = {updateCount}
@@ -32,9 +34,15 @@ function App() {
                   count = {count} updateCount = {updateCount}
                   ></RenderPropsClickCounter>
             )}
-       ></RenderPropsCounter>
+       ></RenderPropsCounter> */}
 
-
+       <UserProvider value = "zheng">
+          {/* we pass this value to 
+          componentC, so all of its 
+          children can use this value
+          */}
+          <ComponentC_39></ComponentC_39>
+       </UserProvider>
        
     </div>
   );
