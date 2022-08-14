@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class PostForm extends Component {
 
@@ -19,6 +20,15 @@ class PostForm extends Component {
     submitHandler =(e)=>{
         e.preventDefault()
         console.log(this.state)
+        axios.get('https://jsonplaceholder.typicode.com/posts', this.state)
+        .then(Response =>{
+            console.log(Response)
+            this.setState({posts: Response.data})
+        })
+        .catch(Error=>{
+            console.log(Error)
+            this.setState({errorMSG: 'Error: not data from server'})
+        })
     }
 
     render() {
