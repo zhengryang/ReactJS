@@ -9,12 +9,12 @@ class UpdateDeleteTable extends Component {
     postData(){
 
 
-        // has to put this local json file in public folder for this path to work
+        // has to put this local json file in 'public folder' for this path to work
         const path1 = 'MOCK_DATA.json'
         axios.get(path1)
         .then(res => console.log(res.data))
         .catch(err => console.log(err) )
-            // console.log(jsonDAta)
+           
             
         
     }
