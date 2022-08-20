@@ -6,6 +6,32 @@ import data from "./mock-data.json";
 function App() {
 
   const [contacts, setContacts] = useState(data);
+  // send form data . follows are name = "fullName" so on.
+  const [addFormData, setAddFormData] = useState({
+     fullName: '',
+     address: '',
+     phoneNumber: '',
+     email: ''
+  });
+
+  const handleAddFormData =(event) => {
+    event.preventDefault();
+    // this is getting 'name' attribute in <input> 
+    const fieldName = event.target.getAttribute('name');
+    // console.log(fieldName)
+    // get the value of name attribute
+    const fieldValue = event.target.value;
+    // console.log(fieldValue)
+    // get copy of existing form data
+    const newFormData = {...addFormData};
+
+    // use new data from input in new form
+    // since newForm is an object
+    // so we use given attribute to get given key
+    newFormData[fieldName] = fieldValue;
+
+    setAddFormData(newFormData);
+  }
 
   return (
     <div className="app-container">
@@ -30,12 +56,40 @@ function App() {
               <td>{contact.email}</td>
             </tr>
           ))}
-
-          
         </tbody>
-
-
       </table>
+      <h1>add a contact</h1>
+      <form>
+            <input
+              type="text"
+              name = "fullName"
+              required = "required"
+              placeholder='Enter a name...'
+              onChange={handleAddFormData}
+            ></input>
+            <input
+              type="text"
+              name = "address"
+              required = "required"
+              placeholder='Enter a address...'
+              onChange={handleAddFormData}
+            ></input>
+            <input
+              type="text"
+              name = "phoneNumber"
+              required = "required"
+              placeholder='Enter a phone nubmer...'
+              onChange={handleAddFormData}
+            ></input>
+            <input
+              type="text"
+              name = "email"
+              required = "required"
+              placeholder='Enter a email...'
+              onChange={handleAddFormData}
+            ></input>
+            <button type="submit" >Add New Contact</button>
+      </form>
     </div>
   );
 }
