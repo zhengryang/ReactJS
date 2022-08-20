@@ -3,6 +3,7 @@ import './App.css';
 import React , {useState}from "react";
 import data from "./mock-data.json";
 import {nanoid} from 'nanoid';
+import ReadOnlyRow from './components/ReadOnlyRow';
 
 function App() {
 
@@ -67,12 +68,7 @@ function App() {
           {/* as we use map, we access each object at json, called 
           'contact' object */}
           {contacts.map((contact)=> (
-            <tr>
-              <td>{contact.fullName}</td>
-              <td>{contact.address}</td>
-              <td>{contact.phoneNumber}</td>
-              <td>{contact.email}</td>
-            </tr>
+              <ReadOnlyRow contact={contact}/>
           ))}
         </tbody>
       </table>
