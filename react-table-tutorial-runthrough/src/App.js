@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React , {useState}from "react";
 import data from "./mock-data.json";
+import {nanoid} from 'nanoid';
 
 function App() {
 
@@ -33,6 +34,23 @@ function App() {
     setAddFormData(newFormData);
   }
 
+  const handleAddFormSubmit =(event) => {
+    event.preventDefault();
+   
+    const newContact = {
+      id: nanoid(),
+      fullName: addFormData.fullName,
+      address: addFormData.address,
+      phoneNumber: addFormData.phoneNumber,
+      email: addFormData.email,
+    }
+
+    const newContacts = [...contacts, newContact];
+    setContacts(newContacts);
+  }
+
+
+
   return (
     <div className="app-container">
       table
@@ -59,7 +77,7 @@ function App() {
         </tbody>
       </table>
       <h1>add a contact</h1>
-      <form>
+      <form onSubmit={handleAddFormSubmit}>
             <input
               type="text"
               name = "fullName"
