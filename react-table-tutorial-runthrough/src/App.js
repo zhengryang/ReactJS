@@ -1,22 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
-import React , {useState}from "react";
+import React, { useState } from "react";
 import data from "./mock-data.json";
-import {nanoid} from 'nanoid';
+import { nanoid } from 'nanoid';
 import ReadOnlyRow from './components/ReadOnlyRow';
+import EditableRow from './components/EditableRow';
+import { Fragment } from 'react';
 
 function App() {
 
   const [contacts, setContacts] = useState(data);
   // send form data . follows are name = "fullName" so on.
   const [addFormData, setAddFormData] = useState({
-     fullName: '',
-     address: '',
-     phoneNumber: '',
-     email: ''
+    fullName: '',
+    address: '',
+    phoneNumber: '',
+    email: ''
   });
 
-  const handleAddFormData =(event) => {
+  const [editContactId, setEditContactId] = useState(2);
+
+
+  const handleAddFormData = (event) => {
     event.preventDefault();
     // this is getting 'name' attribute in <input> 
     const fieldName = event.target.getAttribute('name');
@@ -25,7 +30,7 @@ function App() {
     const fieldValue = event.target.value;
     // console.log(fieldValue)
     // get copy of existing form data
-    const newFormData = {...addFormData};
+    const newFormData = { ...addFormData };
 
     // use new data from input in new form
     // since newForm is an object
@@ -35,9 +40,9 @@ function App() {
     setAddFormData(newFormData);
   }
 
-  const handleAddFormSubmit =(event) => {
+  const handleAddFormSubmit = (event) => {
     event.preventDefault();
-   
+
     const newContact = {
       id: nanoid(),
       fullName: addFormData.fullName,
@@ -55,54 +60,66 @@ function App() {
   return (
     <div className="app-container">
       table
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* as we use map, we access each object at json, called 
+      <form>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* as we use map, we access each object at json, called 
           'contact' object */}
-          {contacts.map((contact)=> (
-              <ReadOnlyRow contact={contact}/>
-          ))}
-        </tbody>
-      </table>
+            {contacts.map((contact) => (
+
+              <Fragment>
+                {editContactId === contact.id ?
+                 (<EditableRow></EditableRow>) : 
+                 (<ReadOnlyRow contact={contact} />)}
+
+
+
+              </Fragment>
+
+            ))}
+          </tbody>
+        </table>
+      </form>
+
       <h1>add a contact</h1>
       <form onSubmit={handleAddFormSubmit}>
-            <input
-              type="text"
-              name = "fullName"
-              required = "required"
-              placeholder='Enter a name...'
-              onChange={handleAddFormData}
-            ></input>
-            <input
-              type="text"
-              name = "address"
-              required = "required"
-              placeholder='Enter a address...'
-              onChange={handleAddFormData}
-            ></input>
-            <input
-              type="text"
-              name = "phoneNumber"
-              required = "required"
-              placeholder='Enter a phone nubmer...'
-              onChange={handleAddFormData}
-            ></input>
-            <input
-              type="text"
-              name = "email"
-              required = "required"
-              placeholder='Enter a email...'
-              onChange={handleAddFormData}
-            ></input>
-            <button type="submit" >Add New Contact</button>
+        <input
+          type="text"
+          name="fullName"
+          required="required"
+          placeholder='Enter a name...'
+          onChange={handleAddFormData}
+        ></input>
+        <input
+          type="text"
+          name="address"
+          required="required"
+          placeholder='Enter a address...'
+          onChange={handleAddFormData}
+        ></input>
+        <input
+          type="text"
+          name="phoneNumber"
+          required="required"
+          placeholder='Enter a phone nubmer...'
+          onChange={handleAddFormData}
+        ></input>
+        <input
+          type="text"
+          name="email"
+          required="required"
+          placeholder='Enter a email...'
+          onChange={handleAddFormData}
+        ></input>
+        <button type="submit" >Add New Contact</button>
       </form>
     </div>
   );
