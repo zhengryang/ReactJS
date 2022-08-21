@@ -18,7 +18,7 @@ function App() {
     email: ''
   });
 
-  const [editContactId, setEditContactId] = useState(2);
+  const [editContactId, setEditContactId] = useState(null);
 
 
   const handleAddFormData = (event) => {
@@ -55,6 +55,10 @@ function App() {
     setContacts(newContacts);
   }
 
+  const handleEditClick = (event, contact) => {
+    event.preventDefault();
+    setEditContactId(contact.id);
+  }
 
 
   return (
@@ -68,6 +72,7 @@ function App() {
               <th>Address</th>
               <th>Phone Number</th>
               <th>Email</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -77,8 +82,10 @@ function App() {
 
               <Fragment>
                 {editContactId === contact.id ?
-                 (<EditableRow></EditableRow>) : 
-                 (<ReadOnlyRow contact={contact} />)}
+                  (<EditableRow></EditableRow>) :
+                  (<ReadOnlyRow contact={contact}
+                    handleEditClick = {handleEditClick}
+                  />)}
 
 
 

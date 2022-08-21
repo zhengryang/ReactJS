@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ReadOnlyRow = ({contact}) => {
+const ReadOnlyRow = ({contact, handleEditClick }) => {
     return (
         
             <tr>
@@ -8,6 +8,12 @@ const ReadOnlyRow = ({contact}) => {
               <td>{contact.address}</td>
               <td>{contact.phoneNumber}</td>
               <td>{contact.email}</td>
+              <td>
+                <button
+                type = "button"
+                 onClick={(event) => handleEditClick(event, contact )}
+                > Edit</button>
+              </td>
             </tr>
         
     );
