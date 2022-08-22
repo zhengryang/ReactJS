@@ -119,7 +119,10 @@ function App() {
     setContacts(newContacts);
   }
 
-
+  // Cancel button handler 
+  const handleCancelClick = () => {
+    setEditContactId(null)
+  }
 
 
   return (
@@ -148,6 +151,7 @@ function App() {
                     editFormData = {editFormData}
                     handleEditFormChange={handleEditFormChange}
                     // end of Edit ------------------------------
+                    handleCancelClick={handleCancelClick}
                   ></EditableRow>) :
                   (<ReadOnlyRow contact={contact}
                     handleEditClick = {handleEditClick}
