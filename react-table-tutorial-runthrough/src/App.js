@@ -18,12 +18,6 @@ function App() {
     email: ''
   });
 
-  const [editFormData, setEditFormData] = useState({
-    fullName: '',
-    address: '',
-    phoneNumber: '',
-    email: ''
-  });
 
   const handleEditFormChange = (event) => {
     event.preventDefault();
@@ -67,6 +61,14 @@ function App() {
     setAddFormData(newFormData);
   }
 
+  // ---------------- Edit 
+  const [editFormData, setEditFormData] = useState({
+    fullName: '',
+    address: '',
+    phoneNumber: '',
+    email: ''
+  });
+
   const handleEditClick = (event, contact) => {
     event.preventDefault();
     setEditContactId(contact.id)
@@ -79,7 +81,28 @@ function App() {
     }
 
     setEditFormData(formValues);
-  };
+  };   // end of Edit ------------------------------
+
+
+  // ---------------- Save
+  const handleEditFormSubmit = (event) => {
+    event.preventDefault();
+
+    const editedContact = {
+      id: editContactId,
+      fullName: editFormData.fullName,
+      address: editFormData.address,
+      phoneNumber: editFormData.phoneNumber,
+      email: editFormData.email,
+    }
+
+    const newContacts = [...contacts];
+    const index = contacts.findIndex((contact) => contact.id === editContactId)
+    newContacts[index] = editedContact;
+    setContacts(newContacts);
+    setEditContactId(null);
+  } // end of save button --------
+
 
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
@@ -102,7 +125,7 @@ function App() {
   return (
     <div className="app-container">
       table
-      <form>
+      <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
@@ -119,10 +142,12 @@ function App() {
             {contacts.map((contact) => (
 
               <Fragment>
+                {/*   // ---------------- Edit */}
                 {editContactId === contact.id ?
                   (<EditableRow
                     editFormData = {editFormData}
                     handleEditFormChange={handleEditFormChange}
+                    // end of Edit ------------------------------
                   ></EditableRow>) :
                   (<ReadOnlyRow contact={contact}
                     handleEditClick = {handleEditClick}
