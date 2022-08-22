@@ -124,6 +124,13 @@ function App() {
     setEditContactId(null)
   }
 
+  // Delete Button
+  const handleDeleteClick = (contactId) => {
+    const newContacts = [...contacts];
+    const index = contacts.findIndex((contact) => contact.id === contactId)
+    newContacts.splice(index,1)
+    setContacts(newContacts);
+  }
 
   return (
     <div className="app-container">
@@ -155,6 +162,7 @@ function App() {
                   ></EditableRow>) :
                   (<ReadOnlyRow contact={contact}
                     handleEditClick = {handleEditClick}
+                    handleDeleteClick = {handleDeleteClick}
                   />)}
 
 
