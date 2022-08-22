@@ -1,0 +1,6 @@
+Git pull
+Git init
+Sudo Git add .
+5581
+Sudo git commit -m ""
+Sudo git push origin main

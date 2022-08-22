@@ -18,6 +18,33 @@ function App() {
     email: ''
   });
 
+  const [editFormData, setEditFormData] = useState({
+    fullName: '',
+    address: '',
+    phoneNumber: '',
+    email: ''
+  });
+
+  const handleEditFormChange = (event) => {
+    event.preventDefault();
+    // this is getting 'name' attribute in <input> 
+    const fieldName = event.target.getAttribute('name');
+    // console.log(fieldName)
+    // get the value of name attribute
+    const fieldValue = event.target.value;
+    // console.log(fieldValue)
+    // get copy of existing form data
+    const newFormData = { ...editFormData};
+
+    // use new data from input in new form
+    // since newForm is an object
+    // so we use given attribute to get given key
+    newFormData[fieldName] = fieldValue;
+
+    setEditFormData(newFormData);
+  }
+
+
   const [editContactId, setEditContactId] = useState(null);
 
 
@@ -40,6 +67,20 @@ function App() {
     setAddFormData(newFormData);
   }
 
+  const handleEditClick = (event, contact) => {
+    event.preventDefault();
+    setEditContactId(contact.id)
+
+    const formValues = {
+      fullName: contact.fullName,
+      address: contact.address,
+      phoneNumber: contact.phoneNumber,
+      email: contact.email,
+    }
+
+    setEditFormData(formValues);
+  };
+
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
 
@@ -55,10 +96,7 @@ function App() {
     setContacts(newContacts);
   }
 
-  const handleEditClick = (event, contact) => {
-    event.preventDefault();
-    setEditContactId(contact.id);
-  }
+
 
 
   return (
@@ -82,7 +120,10 @@ function App() {
 
               <Fragment>
                 {editContactId === contact.id ?
-                  (<EditableRow></EditableRow>) :
+                  (<EditableRow
+                    editFormData = {editFormData}
+                    handleEditFormChange={handleEditFormChange}
+                  ></EditableRow>) :
                   (<ReadOnlyRow contact={contact}
                     handleEditClick = {handleEditClick}
                   />)}
