@@ -12,9 +12,16 @@ const HookMouse = () => {
         setY (e.clientY)
     }
 
+    // use this to replace componentDidMount()
     useEffect(()=>{
         console.log('we called useEffect hook')
         window.addEventListener('mousemove', logMousePosition)
+
+        // we remove the calling
+        return () => {
+            console.log('remove useEffect hook')
+            window.removeEventListener('mousemove', logMousePosition)
+        }
     }, [])
 
     return (
